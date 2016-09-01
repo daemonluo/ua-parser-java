@@ -62,6 +62,7 @@ public class UATest extends TestCase {
     }
 
     public void batch() throws Exception{
+        UA ua = null;
         ClassLoader classLoader = getClass().getClassLoader();
         File file = new File(classLoader.getResource("ua_test_input").getFile());
         FileReader fr = new FileReader(file);
@@ -72,7 +73,11 @@ public class UATest extends TestCase {
         int index = 1;
         while ((line = br.readLine()) != null) {
             if((index % 2) == 1){
-                UA ua = new UA(line);
+                if(ua == null){
+                    ua = new UA(line);
+                }else{
+                    ua.ua = line;
+                }
                 ua1 = ua.detect();
                 //System.out.println(ua1.toObject());
             }else{
@@ -82,6 +87,7 @@ public class UATest extends TestCase {
 
                 ua1 = null;
                 ua2 = null;
+                ua.reset();
             }
             index += 1;
             //System.out.println(index);
@@ -89,16 +95,16 @@ public class UATest extends TestCase {
     }
 
     public void single(){
-        String input = "Mozilla/5.0 (Linux; U; Android 4.2.2; zh-cn; K-Touch T60 Build/JDQ39) AppleWebKit/534.30 (KHTML, like Gecko) FlyFlow/2.4 Version/4.0 Mobile Safari/534.30 baidubrowser/042_81.61.4.2_diordna_008_084/hcuoT-K_71_2.2.4_06T-hcuoT-K/1000357d/2A5267200D7E371C4A9733A24B00E309|034232720169068/1";
+        String input = "Mozilla/5.0 (Linux; U; Android 2.3.6; zh-CN; GT-I9070 Build/GINGERBREAD) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/10.7.0.634 U3/0.8.0 Mobile Safari/534.30";
         UA ua = new UA(input);
         UserAgent userAgent = ua.detect();
 
         /*
         System.out.println(input);
         String output = "";
-        output = userAgent2.prettyPrint();
+        output = userAgent.prettyPrint();
         System.out.println("\033[1;31m" + output + "\033[0m");
-        output = userAgent2.compactPrint();
+        output = userAgent.compactPrint();
         System.out.println("\033[1;31m" + output + "\033[0m");
         */
         System.out.println(userAgent.toObject());

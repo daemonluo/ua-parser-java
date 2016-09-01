@@ -93,13 +93,13 @@ public class UserAgent {
 
         output += indent + "\"" + "browser" + "\" : {\n";
         output += indent + indent + "\"name\" : \"" + this.browser.get("name") + "\",\n";
-        output += indent + indent + "\"version\" : \"" + this.browser.get("version") + "\"\n";
+        output += indent + indent + "\"version\" : \"" + this.browser.get("version") + "\",\n";
         output += indent + indent + "\"mode\" : \"" + this.browser.get("mode") + "\"\n";
         output += indent + "},\n";
 
         output += indent + "\"" + "device" + "\" : {\n";
         output += indent + indent + "\"type\" : \"" + this.device.get("type") + "\",\n";
-        output += indent + indent + "\"model\" : \"" + this.device.get("model") + "\"\n";
+        output += indent + indent + "\"model\" : \"" + this.device.get("model") + "\",\n";
         output += indent + indent + "\"manufacturer\" : \"" + this.device.get("manufacturer") + "\"\n";
         output += indent + "}\n";
 
@@ -110,19 +110,10 @@ public class UserAgent {
     public String compactPrint(){
         String output = "";
 
-        output += "OS name: " + this.os.get("name") + "\n";
-        output += "OS version: " + this.os.get("version") + "\n";
-
-        output += "Engine name: " + this.engine.get("name") + "\n";
-        output += "Engine version: " + this.engine.get("version") + "\n";
-
-        output += "Browser name: " + this.browser.get("name") + "\n";
-        output += "Browser version: " + this.browser.get("version") + "\n";
-        output += "Browser mode: " + this.browser.get("mode") + "\n";
-
-        output += "Device type: " + this.device.get("type") + "\n";
-        output += "Device manufacturer: " + this.device.get("manufacturer") + "\n";
-        output += "Device model: " + this.device.get("model");
+        output += "name=" + this.os.get("name") + ",version=" + this.os.get("version") + ";";
+        output += "name=" + this.engine.get("name") + ",version=" + this.engine.get("version") + ";";
+        output += "name=" + this.browser.get("name") + ",version=" + this.browser.get("version") + ",mode=" + this.browser.get("mode") + ";";
+        output += "model=" + this.device.get("model") + ",type=" + this.device.get("type") + ",manufacturer=" + this.device.get("manufacturer");
 
         return output;
     }

@@ -2237,22 +2237,22 @@ public class UA {
             }
             if(this.browser.name.equals("Internet Explorer")){
                 float version = Version.parseVersion(this.engine.version);
-                if(version == 6.0 && version < 10.0){
+                if(version == 6.0 && Version.parseVersion(this.browser.version) < 10.0){
                     this.browser.version.value = "10.0";
                     this.browser.mode = "compat";
                 }
-                if(version == 5.0 && version < 9.0){
+                if(version == 5.0 && Version.parseVersion(this.browser.version) < 9.0){
                     this.browser.version.value = "9.0";
                     this.browser.mode = "compat";
                 }
-                if(version == 4.0 && version < 8.0){
+                if(version == 4.0 && Version.parseVersion(this.browser.version) < 8.0){
                     this.browser.version.value = "8.0";
                     this.browser.mode = "compat";
                 }
             }
             if(this.os.name.equals("Windows Phone")){
                 float version = Version.parseVersion(this.engine.version);
-                if(version == 5.0 && version < 7.5){
+                if(version == 5.0 && Version.parseVersion(this.os.version) < 7.5){
                     this.os.version = new Version("7.5");
                 }
             }
@@ -3041,6 +3041,14 @@ public class UA {
         correctDevice();
         correctBrowser();
         correctOS();
+    }
+
+    public void reset(){
+        this.ua = "";
+        this.os = new OS("");
+        this.engine = new Engine("");
+        this.device = new Device("");
+        this.browser = new Browser("");
     }
 
     public UserAgent detect(){
