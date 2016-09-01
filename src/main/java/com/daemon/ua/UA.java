@@ -1373,7 +1373,7 @@ public class UA {
                         }
                     }
 
-                    if((this.os.name == null || this.os.name.equals("")) || this.os.name.equals("Windows") || this.os.name.equals("Windows Mobile") || this.os.name.equals("Windows CE")){
+                    if((this.os.name == null || this.os.name.isEmpty()) || this.os.name.equals("Windows") || this.os.name.equals("Windows Mobile") || this.os.name.equals("Windows CE")){
                         if(MANUFACTURER.WINDOWS_MOBILE_MODELS.containsKey(model)){
                             this.device.manufacturer = MANUFACTURER.WINDOWS_MOBILE_MODELS.get(model)[0];
                             this.device.model = MANUFACTURER.WINDOWS_MOBILE_MODELS.get(model)[1];
@@ -2099,7 +2099,7 @@ public class UA {
             this.browser.version = new Version(version);
             this.browser.version.details = 2;
             this.browser.channel = "";
-            if((this.os.name == null || this.os.name.equals("")) || m.group(1).equals("QQBrowser")){
+            if((this.os.name == null || this.os.name.isEmpty()) || m.group(1).equals("QQBrowser")){
                 this.os.name = "Windows";
             }
         }
@@ -2631,12 +2631,12 @@ public class UA {
                 this.device.manufacturer = "Meizu";
                 match.find();
                 String model = "";
-                if(match.groupCount() > 1 && match.group(2) != null && !match.group(2).equals("")){
+                if(match.groupCount() > 1 && match.group(2) != null && !match.group(2).isEmpty()){
                     model = match.group(2);
                 }else{
                     model = match.group(1);
                 }
-                if(match.groupCount() > 2 && match.group(3) != null && !match.group(3).equals("")){
+                if(match.groupCount() > 2 && match.group(3) != null && !match.group(3).isEmpty()){
                     this.device.model = model + "-" + match.group(3);
                 }else{
                     this.device.model = model + "";
@@ -2656,7 +2656,7 @@ public class UA {
                 this.device.manufacturer = "GinDream";
                 match = matcher("(Gionee[-\\s_](\\w*)|\\s(GN\\d+\\w*)[\\s\\)])", Pattern.CASE_INSENSITIVE);
                 match.find();
-                if(match.groupCount() > 1 && match.group(2) != null && !match.group(2).equals("")){
+                if(match.groupCount() > 1 && match.group(2) != null && !match.group(2).isEmpty()){
                     this.device.model = match.group(2);
                 }else if(match.groupCount() > 2){
                     this.device.model = match.group(3);
@@ -2734,7 +2734,7 @@ public class UA {
                 match = matcher("(Nubia[-_\\s](\\w*)|(NX501|NX505J|NX506J|NX507J|NX503A|nx\\d+\\w*)[\\s\\)])", Pattern.CASE_INSENSITIVE);
                 match.find();
                 this.device.manufacturer = "Nubia";
-                if(match.groupCount() > 1 && match.group(2) != null && !match.group(2).equals("")){
+                if(match.groupCount() > 1 && match.group(2) != null && !match.group(2).isEmpty()){
                     this.device.model = match.group(2);
                 }else if(match.groupCount() > 2){
                     this.device.model = match.group(3);
@@ -2754,7 +2754,7 @@ public class UA {
                 match = matcher("K-Touch[-\\s_](tou\\s?ch\\s?(\\d)|\\w*)", Pattern.CASE_INSENSITIVE);
                 match.find();
                 this.device.manufacturer = "K-Touch";
-                if(match.groupCount() > 1 && match.group(2) != null && !match.group(2).equals("")){
+                if(match.groupCount() > 1 && match.group(2) != null && !match.group(2).isEmpty()){
                     this.device.model = "Ktouch" + match.group(2);
                 }else{
                     this.device.model = match.group(1);
@@ -3010,7 +3010,7 @@ public class UA {
                 this.os.version.original = "10";
             }
         }else if(this.os.name.equals("Mac OS X")){
-            match = matcher("Mac OS X[\\s\\_\\-/](\\d+[\\.\\-\\_]\\d+[\\.\\-\\_]?\\d*", Pattern.CASE_INSENSITIVE);
+            match = matcher("Mac OS X[\\s\\_\\-/](\\d+[\\.\\-\\_]\\d+[\\.\\-\\_]?\\d*)", Pattern.CASE_INSENSITIVE);
             if(match.find()){
                 this.os.version = new Version(match.group(1).replace("_", "."));
                 this.os.version.original = match.group(1).replace("_", ".");
