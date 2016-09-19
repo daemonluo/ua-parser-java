@@ -7,19 +7,19 @@ import java.util.ArrayList;
 import java.util.regex.Pattern;
 
 class MANUFACTURER {
-    static public String STRINGS_SAMSUNG = "Samsung";
-    static public String STRINGS_SHARP = "Sharp";
-    static public String STRINGS_SONY_ERICSSON = "Sony Ericsson";
-    static public String STRINGS_MOTOROLA = "Motorola";
-    static public String STRINGS_LG = "LG";
-    static public String STRINGS_HUAWEI = "Huawei";
-    static public String STRINGS_HTC = "HTC";
-    static public String STRINGS_COOLPAD = "Coolpad";
-    static public String STRINGS_ASUS = "Asus";
-    static public String STRINGS_ACER = "Acer";
-    static public String STRINGS_BASED = " based device";
+    static public final String STRINGS_SAMSUNG = "Samsung";
+    static public final String STRINGS_SHARP = "Sharp";
+    static public final String STRINGS_SONY_ERICSSON = "Sony Ericsson";
+    static public final String STRINGS_MOTOROLA = "Motorola";
+    static public final String STRINGS_LG = "LG";
+    static public final String STRINGS_HUAWEI = "Huawei";
+    static public final String STRINGS_HTC = "HTC";
+    static public final String STRINGS_COOLPAD = "Coolpad";
+    static public final String STRINGS_ASUS = "Asus";
+    static public final String STRINGS_ACER = "Acer";
+    static public final String STRINGS_BASED = " based device";
 
-    static public Map<String, Map<String, String[]>> TOUCHWIZ_MODELS = new HashMap<String, Map<String, String[]>>(){
+    static public final Map<String, Map<String, String[]>> TOUCHWIZ_MODELS = new HashMap<String, Map<String, String[]>>(){
         {
             put("SAMSUNG", new HashMap<String, String[]>(){
                 {
@@ -47,7 +47,7 @@ class MANUFACTURER {
         }
     };
 
-    static public Map<String, Map<String, String[]>> BADA_MODELS = new HashMap<String, Map<String, String[]>>(){
+    static public final Map<String, Map<String, String[]>> BADA_MODELS = new HashMap<String, Map<String, String[]>>(){
         {
             put("SAMSUNG", new HashMap<String, String[]>(){
                 {
@@ -76,7 +76,7 @@ class MANUFACTURER {
             });
         }
     };
-    static public Map<String, Map<String, String[]>> TIZEN_MODELS = new HashMap<String, Map<String, String[]>>(){
+    static public final Map<String, Map<String, String[]>> TIZEN_MODELS = new HashMap<String, Map<String, String[]>>(){
         {
             put("SAMSUNG", new HashMap<String, String[]>(){
                 {
@@ -86,7 +86,7 @@ class MANUFACTURER {
         }
     };
 
-    static public Map<String, String[]> BREW_MODELS = new HashMap<String, String[]>(){
+    static public final Map<String, String[]> BREW_MODELS = new HashMap<String, String[]>(){
         {
             put("Coolpad D508", new String[]{STRINGS_COOLPAD, "D508"});
             put("Coolpad E600", new String[]{STRINGS_COOLPAD, "E600"});
@@ -94,7 +94,7 @@ class MANUFACTURER {
         }
     };
 
-    static public Map<String, String[]> WINDOWS_MOBILE_MODELS = new HashMap<String, String[]>(){
+    static public final Map<String, String[]> WINDOWS_MOBILE_MODELS = new HashMap<String, String[]>(){
         {
             put("DX900", new String[]{STRINGS_ACER, "Tempo DX900"});
             put("F900", new String[]{STRINGS_ACER, "Tempo F900"});
@@ -130,7 +130,7 @@ class MANUFACTURER {
             put("M1i", new String[]{STRINGS_SONY_ERICSSON, "M1i Aspen"});
         }
     };
-    static public Map<String, Map<String, String[]>> WINDOWS_PHONE_MODELS= new HashMap<String, Map<String, String[]>>(){
+    static public final Map<String, Map<String, String[]>> WINDOWS_PHONE_MODELS= new HashMap<String, Map<String, String[]>>(){
         {
             put("Acer", new HashMap<String, String[]>(){
                 {
@@ -250,7 +250,7 @@ class MANUFACTURER {
         }
     };
 
-    static public Map<String, String[]> ANDROID_MODELS = new HashMap<String, String[]>(){
+    static public final Map<String, String[]> ANDROID_MODELS = new HashMap<String, String[]>(){
         {
             put("Android", new String[]{null, null});
             put("google sdk", new String[]{null, null});
@@ -2515,7 +2515,7 @@ class MANUFACTURER {
         }
     };
 
-    static public Map<String, String> BLACKBERRY_MODELS = new HashMap<String, String>(){
+    static public final Map<String, String> BLACKBERRY_MODELS = new HashMap<String, String>(){
         {
             put("9600", "Bold");
             put("9650", "Bold");
@@ -2559,7 +2559,7 @@ class MANUFACTURER {
         }
     };
 
-    static public List<Map<String, String>> OTHER_BROWSERS = new ArrayList<Map<String, String>>(){
+    static public final List<Map<String, String>> OTHER_BROWSERS = new ArrayList<Map<String, String>>(){
         {
             add(new HashMap<String, String>(){ {put("name", "AdobeAIR"); put("regexp", "AdobeAIR/([0-9.]*)");} });
             add(new HashMap<String, String>(){ {put("name", "Awesomium"); put("regexp", "Awesomium/([0-9.]*)"); }});

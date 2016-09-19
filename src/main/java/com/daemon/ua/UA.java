@@ -2617,7 +2617,7 @@ public class UA {
                 if(match.find()){
                     this.device.model = match.group(1);
                 }
-            }else if(this.device.manufacturer.toLowerCase().equals("coolpad") && this.device.model != null){
+            }else if(this.device.manufacturer != null && this.device.manufacturer.toLowerCase().equals("coolpad") && this.device.model != null){
                 // base 库适配
                 // 解决移动联通等不同发行版导致的机型不同问题
                 // 特征：[A-Z][0-9]+[A-Z] 例如  8297-t01 8297-c01 8297w 都应该是 8297
@@ -2682,7 +2682,7 @@ public class UA {
                 match.find();
                 this.device.manufacturer = "Zte";
                 this.device.model = match.group(1);
-            }else if(this.device.manufacturer.toLowerCase().equals("zte") && this.device.model != null){
+            }else if(this.device.manufacturer != null && this.device.manufacturer.toLowerCase().equals("zte") && this.device.model != null){
                 // base 库适配
                 // 解决移动联通等不同发行版导致的机型不同问题
                 // 特征：[A-Z][0-9]+[A-Z] 例如  Q505T Q505u 都应该是 Q505
@@ -2828,7 +2828,7 @@ public class UA {
             }
 
             // 针对xiaomi 的部分数据没有格式化成功，格式化1次
-            if(this.device.manufacturer.equals("Xiaomi")){
+            if(this.device.manufacturer != null && this.device.manufacturer.equals("Xiaomi")){
                 if(find("(hm|mi)-(note)", this.device.model, Pattern.CASE_INSENSITIVE)){
                     match = matcher("(hm|mi)-(note)", this.device.model, Pattern.CASE_INSENSITIVE);
                     match.find();
