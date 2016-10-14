@@ -224,6 +224,11 @@ public class UA {
             Matcher m = matcher("OS (.*) like Mac OS X");
             if(m.find()){
                 this.os.version = new Version(m.group(1).replace("_", "."));
+            }else{
+                m = matcher("iOS ([0-9.]*); Scale");
+                if(m.find()){
+                    this.os.version = new Version(m.group(1).replace("_", "."));
+                }
             }
             
             if(contains("iPhone Simulator")){
@@ -2261,10 +2266,10 @@ public class UA {
 
     protected void clearCamouflage(){
         // Corrections
-        if(this.os.name.equals("Android") && this.browser.stock){
+        if(this.os.name != null && this.os.name.equals("Android") && this.browser.stock){
             this.browser.hidden = true;
         }
-        if(this.os.name.equals("iOS") && this.browser.name.equals("Opera Mini")){
+        if(this.os.name != null && this.os.name.equals("iOS") && this.browser.name.equals("Opera Mini")){
             this.os.version = null;
         }
         if(this.browser.name.equals("Midori") && this.engine.name.equals("Webkit")){
@@ -2910,7 +2915,7 @@ public class UA {
                 this.browser.name = "LieBao";
                 this.browser.version = new Version(match.group(1));
                 this.browser.version.original = match.group(1);
-            }else if(this.os.name.equals("Android") && find("safari", Pattern.CASE_INSENSITIVE) && find("version/([0-9\\.]+)", Pattern.CASE_INSENSITIVE)){ // Android Google Browser
+            }else if(this.os.name != null && this.os.name.equals("Android") && find("safari", Pattern.CASE_INSENSITIVE) && find("version/([0-9\\.]+)", Pattern.CASE_INSENSITIVE)){ // Android Google Browser
                 match = matcher("version/([0-9\\.]+)", Pattern.CASE_INSENSITIVE);
                 match.find();
                 this.browser.name = "Google Browser";
@@ -2998,7 +3003,7 @@ public class UA {
         Matcher match = null;
         Matcher tmpMatch = null;
 
-        if(this.os.name.equals("Windows") || find("Windows", Pattern.CASE_INSENSITIVE)){
+        if(this.os.name != null && this.os.name.equals("Windows") || find("Windows", Pattern.CASE_INSENSITIVE)){
             this.os.name = "Windows";
             if(find("NT 6.3", Pattern.CASE_INSENSITIVE)){
                 this.os.version = new Version("8.1");
@@ -3009,7 +3014,7 @@ public class UA {
                 this.os.version.alias = "10";
                 this.os.version.original = "10";
             }
-        }else if(this.os.name.equals("Mac OS X")){
+        }else if(this.os.name != null && this.os.name.equals("Mac OS X")){
             match = matcher("Mac OS X[\\s\\_\\-/](\\d+[\\.\\-\\_]\\d+[\\.\\-\\_]?\\d*)", Pattern.CASE_INSENSITIVE);
             if(match.find()){
                 this.os.version = new Version(match.group(1).replace("_", "."));
@@ -3020,7 +3025,7 @@ public class UA {
                 this.os.version.original = "";
                 this.os.version.alias = "";
             }
-        }else if(find("Android", this.os.name, Pattern.CASE_INSENSITIVE)){
+        }else if(this.os.name != null && find("Android", this.os.name, Pattern.CASE_INSENSITIVE)){
             match = matcher("Android[\\s\\_\\-/i686]?[\\s\\_\\-/](\\d+[\\.\\-\\_]\\d+[\\.\\-\\_]?\\d*)", Pattern.CASE_INSENSITIVE);
             if(match.find()){
                 this.os.version = new Version(match.group(1));
@@ -3052,9 +3057,11 @@ public class UA {
     }
 
     public UserAgent detect(){
-        parse();
-        correct();
         UserAgent userAgent = new UserAgent();
+        if(ua != null){
+            parse();
+            correct();
+        }
         userAgent.setOS(this.os);
         userAgent.setEngine(this.engine);
         userAgent.setBrowser(this.browser);

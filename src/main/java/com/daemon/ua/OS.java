@@ -8,4 +8,9 @@ class OS {
         this.name = name;
         //this.version = new Version("");
     }
+
+    @Override
+    public String toString(){
+        return "(" + this.name + ", " + this.version.value + ")";
+    }
 }
