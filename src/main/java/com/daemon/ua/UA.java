@@ -415,7 +415,7 @@ public class UA {
 
             this.device.type = "mobile";
             try{
-                String[] arr = this.os.version.value.split(".");
+                String[] arr = this.os.version.value.split("\\.");
                 if(arr.length > 0){
                     if(Integer.parseInt(arr[0]) >= 3){
                         this.device.type = "tablet";
@@ -1789,7 +1789,11 @@ public class UA {
             this.browser.name = "Chrome";
             this.browser.version = new Version(m.group(1));
 
-            String version_prefix = String.join(".", Arrays.copyOfRange(m.group(1).split("."), 0, 3));
+            String version_prefix = "";
+            for(String v : Arrays.copyOfRange(m.group(1).split("\\."), 0, 3)){
+                version_prefix += "." + v;
+            }
+            version_prefix = version_prefix.substring(1);
             if(this.os.name.equals("Android")){
                 if(version_prefix.equals("16.0.912")){
                     this.browser.channel = "Beta";

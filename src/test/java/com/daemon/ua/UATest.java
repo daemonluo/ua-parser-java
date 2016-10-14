@@ -95,8 +95,8 @@ public class UATest extends TestCase {
     }
 
     public void single(){
-        String input = "Mozilla/5.0 (Linux; U; Android 2.3.6; zh-CN; GT-I9070 Build/GINGERBREAD) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/10.7.0.634 U3/0.8.0 Mobile Safari/534.30";
-        //String input = "inTV/2.0.6 (iPhone; iOS 9.3.2; Scale/2.00)";
+        //String input = "Mozilla/5.0 (Linux; U; Android 2.3.6; zh-CN; GT-I9070 Build/GINGERBREAD) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/10.7.0.634 U3/0.8.0 Mobile Safari/534.30";
+        String input = "-";
         UA ua = new UA(input);
         UserAgent userAgent = ua.detect();
 
