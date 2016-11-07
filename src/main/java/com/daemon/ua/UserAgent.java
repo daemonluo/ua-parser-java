@@ -10,7 +10,7 @@ public class UserAgent {
     Map<String, String> engine = new HashMap<String, String>();
     Map<String, String> browser = new HashMap<String, String>();
     Map<String, String> device = new HashMap<String, String>();
-    String net = "<net>";
+    String net = "";
 
     public UserAgent(){
         os.put("name", "");
@@ -26,6 +26,26 @@ public class UserAgent {
         device.put("type", "");
         device.put("model", "");
         device.put("manufacturer", "");
+    }
+
+    public Map<String, String> getOS(){
+        return this.os;
+    }
+
+    public Map<String, String> getEngine(){
+        return this.engine;
+    }
+
+    public Map<String, String> getBrowser(){
+        return this.browser;
+    }
+
+    public Map<String, String> getDevice(){
+        return this.device;
+    }
+
+    public String getNettype(){
+        return this.net;
     }
     
     protected String strip(String input, String suffix){
@@ -126,13 +146,14 @@ public class UserAgent {
         return output;
     }
 
-    public Map<String, Map<String, String>> toObject(){
-        Map<String, Map<String, String>> obj = new HashMap<String, Map<String, String>>(){
+    public Map<String, Object> toObject(){
+        Map<String, Object> obj = new HashMap<String, Object>(){
             {
                 put("os", os);
                 put("engine", engine);
                 put("browser", browser);
                 put("device", device);
+                put("nettype", net);
             }
         };
 

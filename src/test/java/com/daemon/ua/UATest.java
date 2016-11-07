@@ -99,7 +99,7 @@ public class UATest extends TestCase {
 
     public void single(){
         //String input = "Mozilla/5.0 (Linux; U; Android 2.3.6; zh-CN; GT-I9070 Build/GINGERBREAD) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/10.7.0.634 U3/0.8.0 Mobile Safari/534.30";
-        String input = "Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D167 MicroMessenger/6.3.15 NetType/3G+ Language/zh_CN";
+        String input = "Mozilla/5.0 (Linux; Android 5.0; vivo X5Pro D Build/LRX21M) AppleWebKit/537.36 (KHTML  like Gecko) Version/4.0 Chrome/37.0.0.0 Mobile Safari/537.36 MicroMessenger/6.1.0.65_r1050890.541 NetType/WIFI";
         UA ua = new UA(input);
         UserAgent userAgent = ua.detect();
 
