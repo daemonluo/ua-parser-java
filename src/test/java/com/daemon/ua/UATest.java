@@ -58,6 +58,9 @@ public class UATest extends TestCase {
         device.manufacturer = deviceItems[2].substring(deviceItems[2].indexOf("=") + 1, deviceItems[2].length());
         userAgent.setDevice(device);
 
+        String net = sections[4];
+        userAgent.setNet(net);
+
         return userAgent;
     }
 
@@ -96,7 +99,7 @@ public class UATest extends TestCase {
 
     public void single(){
         //String input = "Mozilla/5.0 (Linux; U; Android 2.3.6; zh-CN; GT-I9070 Build/GINGERBREAD) AppleWebKit/534.30 (KHTML, like Gecko) Version/4.0 UCBrowser/10.7.0.634 U3/0.8.0 Mobile Safari/534.30";
-        String input = "-";
+        String input = "Mozilla/5.0 (iPhone; CPU iPhone OS 7_1 like Mac OS X) AppleWebKit/537.51.2 (KHTML, like Gecko) Mobile/11D167 MicroMessenger/6.3.15 NetType/3G+ Language/zh_CN";
         UA ua = new UA(input);
         UserAgent userAgent = ua.detect();
 
@@ -109,6 +112,8 @@ public class UATest extends TestCase {
         System.out.println("\033[1;31m" + output + "\033[0m");
         */
         System.out.println(userAgent.toObject());
+        System.out.println(userAgent.prettyPrint());
+        System.out.println(userAgent.compactPrint());
 
         assertTrue(true);
     }

@@ -17,6 +17,7 @@ public class UA {
     Engine engine;
     Device device;
     Browser browser;
+    String net;
 
     public UA(String ua){
         this.ua = ua;
@@ -24,6 +25,7 @@ public class UA {
         this.engine = new Engine("");
         this.device = new Device("");
         this.browser = new Browser("");
+        this.net = "";
     }
 
     protected Matcher matcher(String regex, String input, int flags){
@@ -119,6 +121,13 @@ public class UA {
         s = s.replaceAll("^\\s+|\\s+$", "");
 
         return s;
+    }
+
+    protected void parseNetType(){
+        Matcher m = matcher("NetType/([0-9a-zA-Z\\+]+)(\\s|$)");
+        if(m.find()){
+            this.net = m.group(1).toLowerCase();
+        }
     }
 
     protected void parseOSAndDevice(){
@@ -3040,6 +3049,7 @@ public class UA {
     }
 
     protected void parse(){
+        parseNetType();
         parseOSAndDevice();
         parseBrowser();
         parseEngine();
@@ -3058,6 +3068,7 @@ public class UA {
         this.engine = new Engine("");
         this.device = new Device("");
         this.browser = new Browser("");
+        this.net = "";
     }
 
     public UserAgent detect(){
@@ -3070,6 +3081,7 @@ public class UA {
         userAgent.setEngine(this.engine);
         userAgent.setBrowser(this.browser);
         userAgent.setDevice(this.device);
+        userAgent.setNet(this.net);
         return userAgent;
     }
 }

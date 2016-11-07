@@ -10,6 +10,7 @@ public class UserAgent {
     Map<String, String> engine = new HashMap<String, String>();
     Map<String, String> browser = new HashMap<String, String>();
     Map<String, String> device = new HashMap<String, String>();
+    String net = "<net>";
 
     public UserAgent(){
         os.put("name", "");
@@ -77,6 +78,10 @@ public class UserAgent {
         }
     }
 
+    void setNet(String net){
+        this.net = net;
+    }
+
     public String prettyPrint(){
         String output = "{\n";
         String indent = "    ";
@@ -101,7 +106,9 @@ public class UserAgent {
         output += indent + indent + "\"type\" : \"" + this.device.get("type") + "\",\n";
         output += indent + indent + "\"model\" : \"" + this.device.get("model") + "\",\n";
         output += indent + indent + "\"manufacturer\" : \"" + this.device.get("manufacturer") + "\"\n";
-        output += indent + "}\n";
+        output += indent + "},\n";
+
+        output += indent + "\"" + "nettype" + "\" : " + this.net + "\n";
 
         output += "}";
         return output;
@@ -113,7 +120,8 @@ public class UserAgent {
         output += "name=" + this.os.get("name") + ",version=" + this.os.get("version") + ";";
         output += "name=" + this.engine.get("name") + ",version=" + this.engine.get("version") + ";";
         output += "name=" + this.browser.get("name") + ",version=" + this.browser.get("version") + ",mode=" + this.browser.get("mode") + ";";
-        output += "model=" + this.device.get("model") + ",type=" + this.device.get("type") + ",manufacturer=" + this.device.get("manufacturer");
+        output += "model=" + this.device.get("model") + ",type=" + this.device.get("type") + ",manufacturer=" + this.device.get("manufacturer") + ";";
+        output += "net=" + this.net;
 
         return output;
     }

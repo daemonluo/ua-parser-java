@@ -1,0 +1,16 @@
+apply plugin: 'java'
+
+repositories {
+    mavenLocal()
+    mavenCentral()
+}
+
+dependencies {
+    testCompile group:'junit', name:'junit', version:'3.8.1'
+}
+
+test {
+    testLogging {
+        showStandardStreams = true
+    }
+}
