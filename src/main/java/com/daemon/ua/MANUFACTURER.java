@@ -217,9 +217,12 @@ class MANUFACTURER {
                     put("710", new String[]{"Nokia", "Lumia 710"});
                     put("Nokia 710", new String[]{"Nokia", "Lumia 710"});
                     put("Lumia 710", new String[]{"Nokia", "Lumia 710"});
+                    put("Nokia 719", new String[]{"Nokia", "Lumia 719"});
                     put("Lumia 719", new String[]{"Nokia", "Lumia 719"});
+                    put("Nokia 800", new String[]{"Nokia", "Lumia 800"});
                     put("Lumia 800", new String[]{"Nokia", "Lumia 800"});
                     put("800", new String[]{"Nokia", "Lumia 800"});
+                    put("Nokia 900", new String[]{"Nokia", "Lumia 900"});
                     put("Lumia 900", new String[]{"Nokia", "Lumia 900"});
                     put("XXX", new String[]{"Nokia", "prototype"});
                 }
