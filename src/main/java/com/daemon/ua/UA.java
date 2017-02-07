@@ -28,6 +28,10 @@ public class UA {
         this.net = "";
     }
 
+    public void setInput(String input){
+        ua = input;
+    }
+
     protected Matcher matcher(String regex, String input, int flags){
         Pattern p = Pattern.compile(regex, flags);
         Matcher m = p.matcher(input);
